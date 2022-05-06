@@ -50,6 +50,7 @@ public class UserController {
     @GetMapping("/retrieve/orderInfo/{id}")
     public ResponseEntity<OrderInfoResponse> retrieveOrderInfo (@PathVariable (name = "id") Long id) throws Exception {
         AppUser retrieveUser = appUserService.retriveUser(id);
+        //
         List<AppOrders> retrieveOrders = appOrdersRepository.findAllByAppUser(retrieveUser);
         final int[] totalPrice = new int[1];
         retrieveOrders.forEach(appOrder -> {
