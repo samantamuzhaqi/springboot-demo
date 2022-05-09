@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.mapper.MapOrdersDto;
 import com.example.demo.entity.AppOrders;
-import com.example.demo.entity.AppUser;
 import com.example.demo.repository.AppOrdersRepository;
 import com.example.demo.repository.AppUserRepository;
 import com.example.demo.service.AppOrdersService;
@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class OrdersController {
@@ -22,6 +18,8 @@ public class OrdersController {
     AppUserRepository appUserRepository;
     @Autowired
     AppOrdersService appOrdersService;
+    @Autowired
+    MapOrdersDto mapOrdersDto;
 
     @PostMapping("/add/appOrder")
     public ResponseEntity<AppOrders> addNewAppOrders(@RequestBody AppOrders appOrders) throws Exception{
@@ -32,7 +30,7 @@ public class OrdersController {
     @GetMapping ("/retrieve/appOrder/{id}")
     public ResponseEntity<AppOrders> retrieveAppOrders(@PathVariable(name = "id") Long id) throws Exception {
         AppOrders retrievedAppOrders = appOrdersService.retrieveOrder(id);
-        return new ResponseEntity(retrievedAppOrders, HttpStatus.OK);
+        return new ResponseEntity(mapOrdersDto.buildAppOrdersToAppOrdersDto(retrievedAppOrders), HttpStatus.OK);
     }
     @PutMapping ("/update/appOrder/{id}")
     public ResponseEntity<AppOrders> updateAppOrders(
