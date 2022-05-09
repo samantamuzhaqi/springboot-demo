@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.model.ProductResponse;
-import com.example.demo.entity.AppOrders;
 import com.example.demo.entity.AppProducts;
 import com.example.demo.repository.AppOrdersRepository;
 import com.example.demo.service.AppProductsService;
@@ -9,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.stylesheets.LinkStyle;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 

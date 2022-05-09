@@ -33,7 +33,8 @@ public class AppOrders {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private AppUser appUser;
-
+    @OneToMany (mappedBy = "appOrders", cascade = CascadeType.ALL)
+    private List<AppProducts> appProducts;
 
 
     public AppOrders(Long id, String descriptions, int quantity, String price) {

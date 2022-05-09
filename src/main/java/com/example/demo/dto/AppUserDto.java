@@ -1,21 +1,15 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
 import com.example.demo.entity.enums.AppUserRole;
-import lombok.*;
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode
-@NoArgsConstructor
-@Entity
-@Table(name = "app_user")
-public class AppUser {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class AppUserDto {
     private String name;
     private String username;
     private String password;
@@ -25,17 +19,15 @@ public class AppUser {
     private Boolean locked;
     private Boolean enabled;
 
-
-
-
-
-    public AppUser(String name,
-                   String username,
-                   String password,
-                   String email,
-                   AppUserRole appUserRole,
-                   Boolean locked,
-                   Boolean enabled) {
+    public AppUserDto(
+            String name,
+            String username,
+            String password,
+            String email,
+            AppUserRole appUserRole,
+            Boolean locked,
+            Boolean enabled
+    ) {
         this.name = name;
         this.username = username;
         this.password = password;
